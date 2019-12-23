@@ -8,6 +8,9 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
+import pl.mobiltek.paymentsmobile.dotpay.utils.Settings;
+
+
 /** DotpayDorrioPlugin */
 public class DotpayDorrioPlugin implements FlutterPlugin, MethodCallHandler {
   @Override
@@ -33,7 +36,8 @@ public class DotpayDorrioPlugin implements FlutterPlugin, MethodCallHandler {
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("getDotPayVersion")) {
-      result.success("DotPay " + android.os.Build.VERSION.RELEASE);
+      result.success("DotPay " + Settings.getSDKVersion());
+//      result.success("Android " + android.os.Build.VERSION.RELEASE);
     } else
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
